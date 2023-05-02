@@ -28,9 +28,9 @@ namespace BLL.Repositories
             return await _dbContext.Students.ToListAsync();
         }
 
-        public async Task<Student> GetById(int id)
+        public Student GetById(int id)
         {
-            return await _dbContext.Students.Where(x => x.StudentId == id).SingleOrDefaultAsync();
+            return  _dbContext.Students.Where(x => x.StudentId == id).SingleOrDefault();
         }
 
         public void Insert(Student student)

@@ -17,9 +17,10 @@ namespace BLL.Services
             _repoStudent = repoStudent;
         }
 
-        public async void Delete(int id)
+        public void Delete(int id)
         {
-            var getStudent = await _repoStudent.GetById(id);
+            var getStudent = _repoStudent.GetById(id);
+            if( getStudent != null)
             _repoStudent.Delete(getStudent);
         }
 
@@ -28,7 +29,7 @@ namespace BLL.Services
             return await _repoStudent.GetAll();
         }
 
-        public Task<Student> GetById(int id)
+        public Student GetById(int id)
         {
             return _repoStudent.GetById(id);    
         }

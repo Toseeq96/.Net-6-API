@@ -10,7 +10,7 @@ namespace BLL.Repositories
     public interface IStudentRepository
     {
         Task<List<Student>> GetAll();
-        Task<Student> GetById(int id);
+        Student GetById(int id);
         void Insert(Student student);
         Task Update(Student student);
         void Delete(Student student);

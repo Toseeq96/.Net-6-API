@@ -35,6 +35,7 @@ namespace Net_6_API.Controllers
         public void InsertTeacher(Teacher teacher)
         {
             _repoTeaher.Insert(teacher);
+            _repoTeaher.SaveChangesAsync();
         }
 
         [Route("UpdateTeacher")]
@@ -42,6 +43,7 @@ namespace Net_6_API.Controllers
         public void UpdateTeacher(Teacher teacher)
         {
             _repoTeaher.Update(teacher);
+            _repoTeaher.SaveChangesAsync();
         }
 
         [Route("DeleteTeacherById")]
@@ -49,7 +51,9 @@ namespace Net_6_API.Controllers
         public async void DeleteTeacherById(int id)
         {
             var getTeacher = await _repoTeaher.GetByIdAsync(id);
+            if(getTeacher != null)
             _repoTeaher.Delete(getTeacher);
+           await _repoTeaher.SaveChangesAsync();
         }
 
         [Route("GetTeacherByName")]

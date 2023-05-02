@@ -25,9 +25,9 @@ namespace Net_6_API.Controllers
 
         [Route("GetStudentById")]
         [HttpGet]
-        public async Task<IActionResult> GetStudentById(int id)
+        public IActionResult GetStudentById(int id)
         {
-            return Ok(await _serviceStudent.GetById(id));
+            return Ok( _serviceStudent.GetById(id));
         } 
         
         [Route("InsertStudent")]
