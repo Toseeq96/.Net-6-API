@@ -17,10 +17,9 @@ namespace BLL.Repositories
             _dbContext = dBContext;
         }
 
-        public void Delete(int id)
-        {
-            var getStudent = _dbContext.Students.Where(x => x.StudentId == id);
-            _dbContext.Remove(getStudent);
+        public void Delete(Student student)
+        {            
+            _dbContext.Remove(student);
             _dbContext.SaveChanges();
         }
 

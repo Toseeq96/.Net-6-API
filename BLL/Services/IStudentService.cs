@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Repositories
+namespace BLL.Services
 {
-    public interface IStudentRepository
+    public interface IStudentService
     {
         Task<List<Student>> GetAll();
         Task<Student> GetById(int id);
         void Insert(Student student);
         Task Update(Student student);
-        void Delete(Student student);
+        void Delete(int id);
     }
 }
