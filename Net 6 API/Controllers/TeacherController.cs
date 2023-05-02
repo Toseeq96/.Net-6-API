@@ -31,7 +31,7 @@ namespace Net_6_API.Controllers
         }
 
         [Route("InsertTeacher")]
-        [HttpPatch]
+        [HttpPost]
         public void InsertTeacher(Teacher teacher)
         {
             _repoTeaher.Insert(teacher);
