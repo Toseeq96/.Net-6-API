@@ -9,7 +9,7 @@ namespace Net_6_API.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly IStudentRepository _repoStudent;
+        private readonly IStudentRepository _repoStudent;        
         public StudentController(IStudentRepository repoStudent)
         {
             _repoStudent = repoStudent;

@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDBContext>(options =>
                                            options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbCon")));
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IGenericRepository, GenericRepository>();
 
 var app = builder.Build();
 
