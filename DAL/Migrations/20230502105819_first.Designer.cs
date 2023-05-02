@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20230428071151_firstMigCreateStudent")]
-    partial class firstMigCreateStudent
+    [Migration("20230502105819_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,10 +26,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Student", b =>
                 {
                     b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
 
                     b.Property<string>("FirstName")
                         .IsRequired()

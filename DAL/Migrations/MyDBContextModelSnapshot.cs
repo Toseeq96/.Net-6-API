@@ -24,10 +24,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Student", b =>
                 {
                     b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
 
                     b.Property<string>("FirstName")
                         .IsRequired()

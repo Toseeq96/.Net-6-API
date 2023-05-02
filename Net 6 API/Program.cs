@@ -1,3 +1,4 @@
+using BLL.Repositories;
 using DAL.EF_Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDBContext>(options =>
                                            options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbCon")));
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 var app = builder.Build();
 
