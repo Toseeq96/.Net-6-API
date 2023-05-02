@@ -31,21 +31,21 @@ namespace Net_6_API.Controllers
         }
 
         [Route("InsertTeacher")]
-        [HttpGet]
+        [HttpPatch]
         public void InsertTeacher(Teacher teacher)
         {
             _repoTeaher.Insert(teacher);
         }
 
         [Route("UpdateTeacher")]
-        [HttpGet]
+        [HttpPut]
         public void UpdateTeacher(Teacher teacher)
         {
             _repoTeaher.Update(teacher);
         }
 
         [Route("DeleteTeacherById")]
-        [HttpGet]
+        [HttpDelete]
         public async void DeleteTeacherById(int id)
         {
             var getTeacher = await _repoTeaher.GetByIdAsync(id);

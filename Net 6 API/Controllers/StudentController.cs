@@ -1,4 +1,5 @@
 ﻿using BLL.Repositories;
+using BLL.Services;
 using DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,45 +10,45 @@ namespace Net_6_API.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-        private readonly IStudentRepository _repoStudent;        
-        public StudentController(IStudentRepository repoStudent)
+        private readonly IStudentService _serviceStudent;        
+        public StudentController(IStudentService serviceStudent)
         {
-            _repoStudent = repoStudent;
+            _serviceStudent = serviceStudent;
         }
 
         [Route("GetAllStudents")]
         [HttpGet]
         public async Task<IActionResult> GetAllStudents()
         {
-            return Ok(await _repoStudent.GetAll());
+            return Ok(await _serviceStudent.GetAll());
         }
 
         [Route("GetStudentById")]
         [HttpGet]
         public async Task<IActionResult> GetStudentById(int id)
         {
-            return Ok(await _repoStudent.GetById(id));
+            return Ok(await _serviceStudent.GetById(id));
         } 
         
         [Route("InsertStudent")]
         [HttpPost]
         public void InsertStudent(Student student)
         {
-            _repoStudent.Insert(student);
+            _serviceStudent.Insert(student);
         } 
         
         [Route("UpdateStudentById")]
         [HttpPut]
         public async Task UpdateStudentById(Student student)
         {
-           await _repoStudent.Update(student);
+           await _serviceStudent.Update(student);
         } 
         
         [Route("DeleteStudentById")]
         [HttpDelete]
         public void DeleteStudentById(int id)
         {
-             _repoStudent.Delete(id);
+             _serviceStudent.Delete(id);
         }
     }
 }
