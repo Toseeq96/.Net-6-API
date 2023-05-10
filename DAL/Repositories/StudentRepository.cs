@@ -4,53 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class StudentRepository : IStudentRepository
-    {
+    public class StudentRepository : GenericRepository<Student>, IStudentRepository
+    {        
         private readonly MyDBContext _dbContext;
-        public StudentRepository(MyDBContext dBContext)
+        public StudentRepository(MyDBContext dbContext) : base(dbContext)
         {
-            _dbContext = dBContext;
+            _dbContext = dbContext;
         }
 
-        public void Delete(Student student)
-        {            
-            _dbContext.Remove(student);
-            _dbContext.SaveChanges();
-        }
-
-        public async Task<List<Student>> GetAll()
+        public Student GetByName(string name)
         {
-            return await _dbContext.Students.ToListAsync();
-        }
-
-        public Student GetById(int id)
-        {
-            return  _dbContext.Students.Where(x => x.StudentId == id).SingleOrDefault();
-        }
-
-        public void Insert(Student student)
-        {
-             _dbContext.Students.Add(student);
-            _dbContext.SaveChanges();
-        }
-
-        public async Task Update(Student student)
-        {
-            var getStudent = await _dbContext.Students.Where(x => x.StudentId == student.StudentId).SingleAsync();
-            if (getStudent != null)
-            {
-                getStudent.FirstName = student.FirstName;
-                getStudent.LastName = student.LastName;
-                
-                _dbContext.Update(getStudent);
-                _dbContext.SaveChanges();
-            }           
-            
+            return _dbContext.Students.Where(item => item.FirstName == name).FirstOrDefault();
         }
     }
 }

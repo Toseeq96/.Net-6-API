@@ -29,6 +29,13 @@ namespace Net_6_API.Controllers
         {
             return Ok( _serviceStudent.GetById(id));
         } 
+
+        [Route("GetStudentByName")]
+        [HttpGet]
+        public IActionResult GetStudentById(string name)
+        {
+            return Ok( _serviceStudent.GetByName(name));
+        } 
         
         [Route("InsertStudent")]
         [HttpPost]
@@ -39,9 +46,9 @@ namespace Net_6_API.Controllers
         
         [Route("UpdateStudentById")]
         [HttpPut]
-        public async Task UpdateStudentById(Student student)
+        public void UpdateStudentById(Student student)
         {
-           await _serviceStudent.Update(student);
+            _serviceStudent.Update(student);
         } 
         
         [Route("DeleteStudentById")]

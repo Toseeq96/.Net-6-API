@@ -10,9 +10,10 @@ namespace BLL.Services
     public interface IStudentService
     {
         Task<List<Student>> GetAll();
-        Student GetById(int id);
+        Task<Student> GetById(int id);
+        Student GetByName(string name);
         void Insert(Student student);
-        Task Update(Student student);
-        void Delete(int id);
+        void Update(Student student);
+        Task Delete(int id);
     }
 }

@@ -17,31 +17,36 @@ namespace BLL.Services
             _repoStudent = repoStudent;
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var getStudent = _repoStudent.GetById(id);
+            var getStudent = await _repoStudent.GetByIdAsync(id);
             if( getStudent != null)
             _repoStudent.Delete(getStudent);
         }
 
         public async Task<List<Student>> GetAll()
         {
-            return await _repoStudent.GetAll();
+            return await _repoStudent.GetAllAsync();
         }
 
-        public Student GetById(int id)
+        public async Task<Student> GetById(int id)
         {
-            return _repoStudent.GetById(id);    
+            return await _repoStudent.GetByIdAsync(id);    
         }
 
         public void Insert(Student student)
-        {
-            _repoStudent.Insert(student);
+        {            
+             _repoStudent.Insert(student);                      
         }
 
-        public async Task Update(Student student)
+        public void Update(Student student)
         {
-            await _repoStudent.Update(student);
+             _repoStudent.Update(student);
+        }
+
+        public Student GetByName(string name)
+        {
+            return _repoStudent.GetByName(name);
         }
     }
 }

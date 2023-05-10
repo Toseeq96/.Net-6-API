@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public interface IStudentRepository
+    public interface IStudentRepository: IGenericRepository<Student>
     {
-        Task<List<Student>> GetAll();
-        Student GetById(int id);
-        void Insert(Student student);
-        Task Update(Student student);
-        void Delete(Student student);
+        Student GetByName(string name);
     }
 }
