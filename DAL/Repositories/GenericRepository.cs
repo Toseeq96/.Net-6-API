@@ -20,6 +20,7 @@ namespace BLL.Repositories
         public void Delete(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
+            SaveChangesAsync();
         }
 
         public async Task<List<TEntity>> GetAllAsync()
@@ -40,6 +41,7 @@ namespace BLL.Repositories
         public void Insert(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
+            SaveChangesAsync();
         }
 
         public Task SaveChangesAsync()
@@ -50,6 +52,7 @@ namespace BLL.Repositories
         public void Update(TEntity entity)
         {
             _dbContext.Set<TEntity>().Update(entity);
+            SaveChangesAsync();
         }
     }
 }
